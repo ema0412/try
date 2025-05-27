@@ -1,18 +1,26 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use vendor\laravel\framework\src\Illuminate\Routing;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ContactController::class, 'index']);
+
+Route::post('/thanks/confirm', [ContactController::class, 'confirm']);
+Route::get('/thanks/confirm', [ContactController::class, 'confirm']);
+
+Route::post('/thanks', [ContactController::class, 'store']);
+Route::get('/thanks', [ContactController::class, 'store']);
+
+Route::get('/register',[ContactController::class,'register']);
+Route::post('/register',[ContactController::class,'register']);
+
+
+Route::post('/register/admin/login',[ContactController::class,'login']);
+Route::get('/register/admin/login',[ContactController::class,'login']);
+
+Route::post('/register/admin',[ContactController::class, 'store']);
+Route::get('/register/admin',[ContactController::class, 'store']);
+
+
+
